@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redimensionnement et Positionement</title>
+</head>
+<style>
+    .test {
+        width: 500px;
+        height: 500px;
+
+    }
+
+    .flexible {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .blue {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        position: absolute;
+
+    }
+
+    .black {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+        z-index: 12;
+    }
+
+    .red {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        position: relative;
+
+    }
+
+    .green {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+        position: relative;
+    }
+
+    .purple {
+        width: 100px;
+        height: 100px;
+        background-color: purple;
+    }
+
+    .col-4 {
+        width: 20px;
+        height: 20px;
+        background-color: blueviolet;
+        position: absolute;
+        top: -50;
+        left: 50;
+
+    }
+
+    .yellow {
+        background-color: yellow;
+        width: 100px;
+        height: 100px;
+        position: fixed;
+        top: -5;
+        z-index: 2;
+    }
+</style>
+
+<body>
+    <h1>Page pour Redimensionnement Positionement de mes divs</h1>
+    <!-- <div class="flexible">
+        <div class="test">
+
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam corporis sint labore voluptatem
+            provident,
+            perspiciatis quae nisi, vitae dolor doloremque cum qui debitis quo aliquam consectetur nemo magni vel iusto?
+            Sequi quia numquam enim est provident alias assumenda minus, deleniti dicta quod saepe vero architecto
+            tempore
+            nemo qui magnam, iste libero accusantium! Nisi, illum doloribus optio at eligendi quidem dolor.
+            Aspernatur aliquam cum pariatur delectus ratione aliquid, sit error in asperiores ipsa doloribus! Provident
+            labore aut maxime quibusdam voluptas incidunt ipsa dolorum, sapiente earum aperiam, ducimus debitis eius?
+            Asperiores, perferendis?
+            Veritatis, quibusdam optio voluptatibus dolore nesciunt officia dicta temporibus explicabo. Doloremque,
+            laboriosam. Tempore odio corporis veniam amet, modi cum mollitia et explicabo impedit ex eaque illum
+            sapiente
+            nam obcaecati fugiat.
+            Voluptates debitis natus iste ad magni autem, culpa facilis iusto sunt illum quisquam blanditiis sed minus,
+            officia distinctio dolorem nihil recusandae. Quos, laboriosam voluptatem amet rem voluptates dignissimos
+            delectus doloribus.
+            Accusamus illo consequuntur, laborum officia est tempora. Deserunt voluptatem dolorum quam placeat illo,
+            minus
+            incidunt rerum magnam voluptas illum, sed quidem temporibus iusto sint vel. Molestias earum rerum quisquam
+            ab.
+            Repudiandae tenetur quo necessitatibus laborum consectetur ratione. Numquam modi quo ad saepe, harum
+            blanditiis
+            autem, alias rem aspernatur eveniet ipsam! Minus eum deserunt cum exercitationem vitae inventore dicta ea
+            quas.
+            Repudiandae numquam modi porro deserunt delectus, corrupti quisquam architecto? Vero ad error, animi, quia
+            placeat quod odio eaque, accusantium dolorem delectus consequuntur tempore dolorum vitae sed eum officia
+            quas
+            veniam?
+            Ad, deserunt. Consequuntur facere est sunt iusto quisquam, iure aliquid unde eius soluta dolorum officiis
+            laudantium impedit dolor nam laboriosam, suscipit voluptatibus ipsam magnam, placeat nobis quia totam!
+            Voluptate, obcaecati.
+            Necessitatibus maxime aliquam iure nemo fugit rem itaque, magni totam commodi, iste voluptas veniam. Impedit
+            dolores nisi in quaerat eligendi minima enim ratione earum ea. Explicabo error ipsa accusamus ratione.
+        </div>
+        <div class="test">
+
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam corporis sint labore voluptatem
+            provident,
+            perspiciatis quae nisi, vitae dolor doloremque cum qui debitis quo aliquam consectetur nemo magni vel iusto?
+            Sequi quia numquam enim est provident alias assumenda minus, deleniti dicta quod saepe vero architecto
+            tempore
+            nemo qui magnam, iste libero accusantium! Nisi, illum doloribus optio at eligendi quidem dolor.
+            Aspernatur aliquam cum pariatur delectus ratione aliquid, sit error in asperiores ipsa doloribus! Provident
+            labore aut maxime quibusdam voluptas incidunt ipsa dolorum, sapiente earum aperiam, ducimus debitis eius?
+            Asperiores, perferendis?
+            Veritatis, quibusdam optio voluptatibus dolore nesciunt officia dicta temporibus explicabo. Doloremque,
+            laboriosam. Tempore odio corporis veniam amet, modi cum mollitia et explicabo impedit ex eaque illum
+            sapiente
+            nam obcaecati fugiat.
+            Voluptates debitis natus iste ad magni autem, culpa facilis iusto sunt illum quisquam blanditiis sed minus,
+            officia distinctio dolorem nihil recusandae. Quos, laboriosam voluptatem amet rem voluptates dignissimos
+            delectus doloribus.
+            Accusamus illo consequuntur, laborum officia est tempora. Deserunt voluptatem dolorum quam placeat illo,
+            minus
+            incidunt rerum magnam voluptas illum, sed quidem temporibus iusto sint vel. Molestias earum rerum quisquam
+            ab.
+            Repudiandae tenetur quo necessitatibus laborum consectetur ratione. Numquam modi quo ad saepe, harum
+            blanditiis
+            autem, alias rem aspernatur eveniet ipsam! Minus eum deserunt cum exercitationem vitae inventore dicta ea
+            quas.
+            Repudiandae numquam modi porro deserunt delectus, corrupti quisquam architecto? Vero ad error, animi, quia
+            placeat quod odio eaque, accusantium dolorem delectus consequuntur tempore dolorum vitae sed eum officia
+            quas
+            veniam?
+            Ad, deserunt. Consequuntur facere est sunt iusto quisquam, iure aliquid unde eius soluta dolorum officiis
+            laudantium impedit dolor nam laboriosam, suscipit voluptatibus ipsam magnam, placeat nobis quia totam!
+            Voluptate, obcaecati.
+            Necessitatibus maxime aliquam iure nemo fugit rem itaque, magni totam commodi, iste voluptas veniam. Impedit
+            dolores nisi in quaerat eligendi minima enim ratione earum ea. Explicabo error ipsa accusamus ratione.
+        </div>
+    </div> -->
+    <div class="blue"></div>
+    <div class="black"></div>
+    <div class="red"></div>
+    <div class="green">
+        <div class="col-4"></div>
+    </div>
+    <div class="purple"></div>
+    <div class="yellow"></div>
+    <div class="black"></div>
+    <div class="red"></div>
+    <div class="green"></div>
+    <div class="purple"></div>
+    <div class="blue"></div>
+    <div class="black"></div>
+    <div class="red"></div>
+    <div class="green"></div>
+    <div class="purple"></div>
+
+
+    <!-- si le container(ici green) est sous static, et un item de container est sous absolute, alors si je deplace item, il sera deplacé par rapport a tous mon ecran -->
+    <!--Si vous voulez qu'un element se positionne par rapport a son conteneur, il faut: mettre le conteneur sous "relative" et on met l'element sous "absolute"  -->
+</body>
+
+</html>

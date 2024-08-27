@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Span Vs Div</title>
+</head>
+<style>
+    .blue {
+        display: inline;
+    }
+
+    .Span {
+        display: block;
+    }
+
+    .flexible {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+
+    }
+
+    .b {
+        width: 200px;
+        height: 200px;
+        border-radius: 35px;
+        border: 2px solid rgb(139, 74, 74);
+    }
+</style>
+
+<body>
+    <h1>Bienvenu</h1>
+    <div class="blue" style="background-color: blue; height:100px;">Text pour div en demo</div>
+    <div class="blue" style="background-color: rgb(212, 255, 0); height:100px;">Text pour div en demo</div>
+    <span class="Span" style="background-color: brown; height:100px;">Ceci est du span</span>
+    <span class="Span" style="background-color: rgb(19, 173, 35); height:100px;">Ceci est du span pour test</span>
+    <!-- Un div s'affiche en block et un span s'affiche en inline -->
+
+
+    <div class="flexible">
+        <div class="b0">1</div>
+        <div class="b0">
+            <div style="background-color: rgb(85, 101, 180); " class="b1">2.1</div>
+            <div style="background-color: rgb(17, 163, 61); " class="b1">2.2</div>
+            <div style="background-color: rgb(105, 111, 74); " class="b1">2.3</div>
+            <div style="background-color: rgb(222, 60, 165); " class="b1">2.4</div>
+            <div style="background-color: rgb(78, 247, 247); " class="b1">2.5</div>
+        </div>
+        <div class="b0">3</div>
+        <div class="b0">4</div>
+        <div class="b0">5</div>
+    </div>
+</body>
+
+</html>

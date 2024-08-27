@@ -1,0 +1,11 @@
+body{
+    color : white;
+    background-image: url('../img/background2.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size:cover;
+/* 
+    background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%); */
+    /* background-image: conic-gradient(red 0deg, red 90deg, yellow 90deg, yellow 180deg, green 180deg, green 270deg, blue 270deg); */
+}

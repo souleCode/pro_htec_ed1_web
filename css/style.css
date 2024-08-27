@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+
+.titre{
+    color:#978bc4;
+    text-align: center;
+    font-size:50px;
+}
+
+h2 {
+    color: chartreuse;
+    text-align: center;
+    text-decoration: underline;
+    text-shadow: 10px;
+}
+
+.text-droit {
+    color: aqua;
+    text-align: right;
+}
+
+#text-id {
+    color: brown;
+    text-align: center;
+    text-decoration: none;
+}
+
+.text-id-class {
+    color: hotpink;
+    text-align: center;
+    font-size: 45px;
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+p.para{
+    color:lightblue;
+    font-size:22px;
+    font-weight:bold;
+    font-style:italic;
+    font-family: 'Arial Narrow', Arial, sans-serif;
+}
