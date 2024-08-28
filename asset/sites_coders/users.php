@@ -9,9 +9,9 @@
 
 <body>
     <ul>
-        <li> <a href="../index.html">Accueil</a></li>
-        <li><a href="projets.html">Projets</a></li>
-        <li><a href="users.html" target="_blank">Utilisateurs</a></li>
+
+        <li><a href="projets.php">Projets</a></li>
+        <li><a href="users.php" target="_blank">Utilisateurs</a></li>
     </ul>
 
     <h1>Bienvenu sur votre page de connexion</h1>
