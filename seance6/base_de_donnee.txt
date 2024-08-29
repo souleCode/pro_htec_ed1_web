@@ -1,0 +1,9 @@
+   Pour la table users
+     *ID,==> doit etre auto-encrement et unique
+     *Nom,
+     *Prenom,
+     *email,
+     *password,
+     *password_confirm,
+
+Comme le password==password_confirm, alors j'ai pas besoin d'inserer le password_confirm     
