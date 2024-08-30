@@ -1,17 +1,13 @@
 <?php
+session_start();
+require('fonctions.php');
 
-//function do display br
-
-function displayBr()
-{
-    echo "<br/>";
-}
-
+$_SESSION['username'] = "souley";
 
 $dept = "Informatique";
 $commune = "KOUROUMA";
 $nom = "Souley";
-$age = 20;
+$age = 10;
 $email = 'solo.2026@gmail.com';
 
 print("Le departement est " . $dept);
@@ -63,3 +59,83 @@ switch ($val) {
     default:
         echo "Djo tu fumes quoi meme!";
 }
+displayBr();
+displayBr();
+echo "=====================================Seance7========================";
+
+// les formes terniaires.== $var=(condition)? $var : $var3;
+
+$nom = ($age <= 20) ? 'Souley' : 'Inconnu';
+displayBr();
+echo $nom;
+displayBr();
+// Les boucles en PHP
+while ($age <= 20) {
+    echo "============Bonjour " . $nom . "====================";
+    displayBr();
+    $age = $age + 2; // age=10//age->10+2==> age+=2
+}
+displayBr();
+// for
+// for ($i = 0; $i < 10; $i++) {
+//     echo $i;
+//     displayBr();
+// }
+displayBr();
+// foreach key=>value
+$user1 = array(
+    "nom" => "Souley",
+    'age' => 22,
+    "Filiere" => 'GIIA',
+    'ville' => 'Meknes',
+);
+
+$user2 = array(
+    "nom" => "Wahab",
+    'age' => 18,
+    "Filiere" => 'MIP',
+    'ville' => 'Tanger',
+);
+echo "L'age de user1 est " . $user1['age'];
+displayBr();
+echo "La filiere de user1 est " . $user1['Filiere'];
+displayBr();
+displayBr();
+displayBr();
+echo "L'age de user2 est " . $user2['age'];
+displayBr();
+echo "La filiere de user2 est " . $user2['Filiere'];
+displayBr();
+displayBr();
+echo '<h1> La partir pour afficher le contenu du tableau avec foreach de user1</h1>';
+//Foreach sur les tables ass
+foreach ($user1 as $user_info) {
+    echo "L'information extraite est " . $user_info;
+    displayBr();
+}
+
+displayBr();
+echo '<h1> La partir pour afficher le contenu du tableau avec foreach de user2</h1>';
+//Foreach sur les tables ass
+foreach ($user2 as $user_info) {
+    echo "L'information extraite est " . $user_info;
+    displayBr();
+}
+// foreach sur les tables avec keys
+displayBr();
+displayBr();
+foreach ($user2 as $keys => $values) {
+    echo "Les infos sont " . $keys . "=> " . $values;
+    displayBr();
+}
+displayBr();
+displayBr();
+echo '<h3>Les tableau a 2D </h3>';
+$membres = array(
+    array('Souley', 22, 'solo@gmail.com'),
+    array('Pierre', 24, 'piere@gmail.com'),
+    array('Dieudonne', 25, 'dieudne@gmail.com'),
+);
+echo $membres[1][2];
+displayBr();
+echo $membres[2][0];
