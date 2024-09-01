@@ -1,25 +1,53 @@
 <?php
 include('fonction.php');
+include_once('config.php');
 // '12345'==12345 mais en vrai '4'!=4, pour palier a ce probleme de type on utilise (===)
 // == c'st une engalite, ex: $val==4
 //= c'est une affectation pour dire la valeur prend la valeur a votre droite ex: $val=4;
+
+//Traitement de la session quand user veut acceder a une page qui necessite la connexion
+if (isset($_SESSION['connecte_msg'])) {
+    $connecte_msg = $_SESSION['connecte_msg'];
+    unset($_SESSION['connecte_msg']);
+}
+if (isset($connecte_msg) && !empty($connecte_msg)) {
+    echo '<div class="alert alert-danger text-center ">' . $connecte_msg . '</div>';
+}
+
+//Traitement des donnees de users
 if (isset($_POST['submit'])) {
     $nom = securisation($_POST['nom']);
     $prenom = securisation($_POST['prenom']);
     $email = securisation($_POST['email']);
     $pwd = securisation($_POST['pwd']);
     $pwd_confirm = securisation($_POST['pwd_confirm']);
-    //$val ="     ";
-    // isset($val)=True; 
-    // !empty($val)=True
+
     if (isset($nom, $prenom, $email, $pwd, $pwd_confirm) && !empty($nom) && !empty($email) && !empty($prenom) && !empty($pwd) && !empty($pwd_confirm)) {
         if ($pwd === $pwd_confirm) {
-            echo "Bien jouer pour l'instant vous etes bon";
+            // $password_hash = md5($pwd_confirm);
+            $password_hash = password_hash($pwd, PASSWORD_DEFAULT);
+            if (isEmailValide($email)) {
+                if (!EmailExists($email, $pdo)) {
+                    $query = "INSERT INTO users(nom,prenom,email,password)
+                    VALUES(?,?,?,?)";
+                    $params = array($nom, $prenom, $email, $password_hash);
+                    $result = $pdo->prepare($query);
+                    $res = $result->execute($params);
+                    if ($res) {
+                        $_SESSION['login_msg'] = "Votre compte est crée avec succès. Veuillez vous connectez en utilisant vos identifiants!";
+                        header('Location:login.php');
+                    }
+                } else {
+                    echo '<div class="alert alert-danger text-center ">Un compte existe deja avec et email</div>';
+                }
+            } else {
+                echo '<div class="alert alert-info text-center ">Veuillez utiliser un email valide</div>';
+            }
         } else {
-            echo "Les deux mots de passes sont pas les mêmes";
+            echo '<div class="alert alert-danger text-center ">Les mots de passe sont pas les mêmes</div>';
         }
     } else {
-        echo "Veuillez remplir tous les champs";
+        echo '<div class="alert alert-warning text-center ">Veuillez remplir tous les champs</div>';
     }
 }
 ?>
