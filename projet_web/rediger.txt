@@ -1,0 +1,6 @@
+	<?php while ($o = $categories->fetch(PDO::FETCH_ASSOC)) { ?>
+				<option value=" <?= $o['categorie_url'] ?>"
+					<?php if (isset($cat) && $cat == $o['categorie_url']) {
+						echo 'selected';
+					} ?>><?= $o['categorie'] ?> </option>
+			<?php } ?>
