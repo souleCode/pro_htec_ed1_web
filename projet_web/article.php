@@ -14,6 +14,32 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 	$contenu = $article['contenu'];
 	$categorie = getNomCategorie($article['categorie']);
 }
+
+if (isset($_GET['id'], $_POST['commentaire']) && !empty($_GET['id'])) {
+	$id = $_GET['id'];
+	$nom = securisation($_POST['nom']);
+	$email = securisation($_POST['email']);
+	$contenu = securisation($_POST['contenu']);
+	if (!empty($nom) && !empty($email) && !empty($contenu)) {
+		$quert_ins_comm = "INSERT INTO commentaires(id_article,nom,email,contenu) 
+							VALUES (?, ?, ?, ?)";
+		$params = array($id, $nom, $email, $contenu);
+		$result = $pdo->prepare($quert_ins_comm);
+		$res = $result->execute($params);
+		if ($res) {
+			$_SESSION['comment_msg'] = "Votre commentaire a bien ete ajouter";
+		}
+	}
+}
+
+// Affichage des comments
+
+if ($_GET['id'] && !empty($_GET['id'])) {
+	$id = $_GET['id'];
+	$query_select_comm = "SELECT * FROM commentaires WHERE id_article=? ORDER BY id DESC";
+	$result_comm = $pdo->prepare($query_select_comm);
+	$result_comm->execute([$id]);
+}
 ?>
 
 <!DOCTYPE html>
@@ -42,6 +68,13 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
 	<hr>
 
+	<?php while ($comm = $result_comm->fetch()) { ?>
+		<div>
+			<p style="text-align: center;"><?= $comm['contenu'] ?> </p>
+		</div>
+	<?php } ?>
+
+
 	<section id="commentaires" class="commentaires">
 		<h2>Commentaires</h2>
 		<form method="POST" action="#commentaires">
@@ -52,6 +85,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 			<br>
 			<input type="submit" name="commentaire" value="Poster le commentaire">
 		</form>
+
 
 	</section>
 
