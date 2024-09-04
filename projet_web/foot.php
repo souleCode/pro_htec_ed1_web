@@ -1,6 +1,9 @@
 <?php
-// require_once('php/config.php');
-// $side_categories = $bdd->query('SELECT * FROM categories ORDER BY id DESC LIMIT 5');
+require_once('php/config.php');
+$side_categories = $pdo->query('SELECT * FROM categories ORDER BY id DESC LIMIT 5');
+// var_dump($side_categories->fetch());
+// die();
+$commentaires = $pdo->query('SELECT * FROM commentaires ORDER BY id DESC LIMIT 5');
 ?>
 
 </section>
@@ -15,22 +18,25 @@
 
 	<h4>Catégories recentes</h4>
 	<ul>
-		<li>1</li>
-		<li>2</li>
-		<li>3</li>
-		<li>4</li>
-		<li>5</li>
+		<?php while ($c = $side_categories->fetch()) { ?>
+			<a href="index.php?categorie=<?= $c['slug_categorie'] ?>">
+				<li><?= $c['nom'] ?></li>
+			</a>
+		<?php 	} ?>
+
 	</ul>
 
 	<h4>Commentaires récents</h4>
 	<ul>
 
 		<li>
-			<a href="article.php">
-				<i>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet corrupti delectus dicta quos ad commodi sunt sit aliquid ea, modi, nesciunt iusto doloribus ut cum, est aliquam alias. Quod, quae.
-					Quasi blanditiis, eum molestiae neque sint ab vel libero aspernatur ad maiores dolorum laudantium voluptatem facere animi quos unde placeat assumenda similique perspiciatis facilis pariatur omnis repellat, nobis ullam? Totam!</i><br>
-				- TROARE Souleymane
-			</a>
+			<?php while ($comm = $commentaires->fetch()) { ?>
+				<a href="article.php?id=<?= $comm['id_article'] ?>">
+					<i><?= $comm['contenu'] ?></i><br>
+					- <?= $comm['nom'] ?>
+				</a>
+				<br><br>
+			<?php } ?>
 		</li>
 
 	</ul>

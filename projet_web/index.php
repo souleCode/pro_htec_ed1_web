@@ -1,8 +1,15 @@
 <?php
 include_once('php/config.php');
 include_once('php/functions.php');
-$query = "SELECT * FROM articles ORDER BY id DESC";
-$result = $pdo->query($query);
+if (isset($_GET['categorie']) && !empty($_GET['categorie'])) {
+	$categorie = securisation($_GET['categorie']);
+	$query = "SELECT * FROM articles WHERE categorie=? ORDER BY id DESC";
+	$result = $pdo->prepare($query);
+	$result->execute([$categorie]);
+} else {
+	$query = "SELECT * FROM articles ORDER BY id DESC";
+	$result = $pdo->query($query);
+}
 
 
 ?>
@@ -22,6 +29,10 @@ $result = $pdo->query($query);
 
 
 	<?php while ($art = $result->fetch()) { ?>
+		<?php
+		if (!$art) {
+			echo "<h1>PAs d'articles</h1>";
+		} ?>
 		<div class="article">
 			<div class="image-wrapper">
 				<a href="#">
@@ -33,6 +44,7 @@ $result = $pdo->query($query);
 			<span class="categorie"><?= getNomCategorie($art['categorie']) ?></span> - <span class="date"><?= $art['date_post'] ?></span>
 			<p><?= contentTraitment($art['contenu'], 400) ?></p>
 		</div>
+
 	<?php } ?>
 
 
