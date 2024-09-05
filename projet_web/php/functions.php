@@ -40,3 +40,14 @@ function contentTraitment($content, $longueurMax = 100)
 		return $content;
 	}
 }
+
+function login($nom, $pwd)
+{
+	$_SESSION['nom'] = $nom;
+	$_SESSION['pwd'] = $pwd;
+}
+function logout()
+{
+	unset($_SESSION['nom']);
+	unset($_SESSION['pwd']);
+}
