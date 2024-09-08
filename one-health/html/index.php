@@ -1,3 +1,14 @@
+<?php
+include_once('includes/fonctions.php');
+$msg = "";
+if (isset($_SESSION['user_connected'])) {
+  $msg = $_SESSION['user_connected'];
+  unset($_SESSION['user_connected']);
+}
+
+?>
+
+
 <!DOCTYPE php>
 <php lang="en">
 
@@ -8,6 +19,9 @@
 
 
     <?php include_once('includes/header.php') ?>
+    <?php if (isset($msg) && !empty($msg)) {
+      echo '<div style="text-align:center;" class="alert alert-info">' . $msg . '</div>';
+    } ?>
 
     <div class=" ilyjhtbgrefczds bg-image overlay-dark" style="background-image: url(../assets/img/bg_image_1.jpg);">
       <div class="hero-section">

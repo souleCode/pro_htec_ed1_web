@@ -1,3 +1,6 @@
+<?php
+include_once('fonctions.php');
+?>
 <div class="back-to-top"></div>
 
 <header>
@@ -58,9 +61,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="contact.php">Contacter</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary ml-lg-3" href="register.php">S'inscrire</a>
-                    </li>
+                    <?php if (isset($_SESSION['idUser'], $_SESSION['emailU'], $_SESSION['pwdU'])) : ?>
+                        <li class="nav-item">
+                            <a class="btn btn-primary ml-lg-3" href="logout.php">Se déconnecter</a>
+                        </li>
+                    <?php else : ?>
+                        <li class="nav-item">
+                            <a class="btn btn-primary ml-lg-3" href="register.php">S'inscrire</a>
+                        </li>
+                    <?php endif ?>
                 </ul>
             </div> <!-- .navbar-collapse -->
         </div> <!-- .container -->
