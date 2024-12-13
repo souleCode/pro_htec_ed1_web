@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste des pays</title>
+</head>
+
+<body>
+
+  <label for="country">Sélectionnez votre pays :</label>
+  <select id="country" name="country">
+    <option value="">-- Sélectionnez un pays --</option>
+  </select>
+
+  <script>
+    // Utilise l'API Rest Countries pour obtenir la liste des pays
+    fetch('https://restcountries.com/v3.1/all')
+      .then(response => response.json())
+      .then(data => {
+        const select = document.getElementById('country');
+
+        // Trie les pays par nom
+        const sortedCountries = data.sort((a, b) => a.name.common.localeCompare(b.name.common));
+
+        // Ajoute chaque pays comme option dans la liste déroulante
+        sortedCountries.forEach(country => {
+          const option = document.createElement('option');
+          option.value = country.cca2;  // Code du pays (ex: FR pour France)
+          option.textContent = country.name.common;  // Nom du pays
+          select.appendChild(option);
+        });
+      })
+      .catch(error => console.error('Erreur lors du chargement des pays :', error));
+  </script>
+
+</body>
+
+</html>

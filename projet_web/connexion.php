@@ -1,3 +1,24 @@
+<?php
+include_once('php/config.php');
+require_once('php/functions.php');
+if (isset($_POST['connexion'])) {
+	$nom = $_POST['pseudo'];
+	$pwd = $_POST['mdp'];
+	$query = "INSERT INTO users(nom,pwd) VALUES(?,?)";
+	$params = array($nom, $pwd);
+	$result = $pdo->prepare($query);
+
+	$res = $result->execute($params);
+	if ($res) {
+		login($nom, $pwd);
+		$_SESSION['user_msg'] = "Vous etes connectés";
+		header('Location:index.php');
+	}
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -9,7 +30,7 @@
 
 <body>
 
-	<?php include_once 'includes/head.php' ?>
+	<?php include_once 'head.php' ?>
 
 	<h2>Connexion</h2>
 	<form method="POST">
@@ -21,7 +42,7 @@
 	</form>
 
 
-	<?php include_once 'includes/foot.php' ?>
+	<?php include_once 'foot.php' ?>
 
 </body>
 

@@ -1,6 +1,6 @@
 <?php
 require_once('php/config.php');
-$side_categories = $pdo->query('SELECT * FROM categories ORDER BY id DESC LIMIT 5');
+$side_categories = $pdo->query('SELECT * FROM categories ORDER BY id DESC LIMIT 8');
 // var_dump($side_categories->fetch());
 // die();
 $commentaires = $pdo->query('SELECT * FROM commentaires ORDER BY id DESC LIMIT 5');
@@ -9,8 +9,8 @@ $commentaires = $pdo->query('SELECT * FROM commentaires ORDER BY id DESC LIMIT 5
 </section>
 
 <section class="sidebar">
-
-	<form method="GET" action="/">
+	<!-- Sur index.php il faut faire GET['q'] pour prendre la recherche de user -->
+	<form method="GET" action="index.php">
 		<input type="text" name="q" placeholder="Rechercher...">
 		<input type="submit" value="OK">
 	</form>
